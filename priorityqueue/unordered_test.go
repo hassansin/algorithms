@@ -11,7 +11,7 @@ func (d1 myKey) Less(d Key) bool {
 }
 
 func TestUnorderedMinPQ(t *testing.T) {
-	minPQ := UnorderedMinPQ{}
+	minPQ := NewUnorderedMinPQ()
 	for i := 0; i < 20; i++ {
 		minPQ.Insert(myKey(i))
 	}
@@ -22,7 +22,7 @@ func TestUnorderedMinPQ(t *testing.T) {
 		t.Errorf("Expected non-empty, got empty")
 	}
 	for i := 0; i < 20; i++ {
-		min, _ := minPQ.Peek()
+		min := minPQ.Peek()
 		if min != myKey(i) {
 			t.Errorf("Expected %v, Got %v", i, min)
 		}

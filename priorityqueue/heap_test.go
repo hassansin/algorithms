@@ -3,7 +3,7 @@ package priorityqueue
 import "testing"
 
 func TestBinaryHeapMinPQ(t *testing.T) {
-	minPQ := BinaryHeapMinPQ{}
+	minPQ := NewBinaryHeapMinPQ()
 	for i := 20; i > 0; i-- {
 		minPQ.Insert(myKey(i))
 	}

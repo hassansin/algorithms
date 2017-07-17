@@ -3,7 +3,7 @@ package priorityqueue
 import "testing"
 
 func TestOrderedMinPQ(t *testing.T) {
-	minPQ := OrderedMinPQ{}
+	minPQ := NewOrderedMinPQ()
 	for i := 0; i < 20; i++ {
 		minPQ.Insert(myKey(i))
 	}
