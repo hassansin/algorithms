@@ -13,27 +13,26 @@ func (pq *unorderedMinPQ) Insert(k Key) {
 
 // Remove removes the minimum Key from the queue and returns it. Time Complexity: O(n)
 func (pq *unorderedMinPQ) Remove() Key {
-	idx := 0
-	for i, k := range *pq {
-		if k.Less((*pq)[idx]) {
-			idx = i
-		}
-	}
+	idx, key := pq.peek()
 	pq.swap(idx, len(*pq)-1)
-	key, pqp := (*pq)[len(*pq)-1], (*pq)[:len(*pq)-1]
-	*pq = pqp
+	*pq = (*pq)[:len(*pq)-1]
 	return key
 }
 
 // Peek returns the minimum Key in the queue. Time Complexity: O(n)
-func (pq *unorderedMinPQ) Peek() Key {
+func (pq unorderedMinPQ) Peek() Key {
+	_, key := pq.peek()
+	return key
+}
+
+func (pq *unorderedMinPQ) peek() (int, Key) {
 	idx := 0
 	for i, k := range *pq {
 		if k.Less((*pq)[idx]) {
 			idx = i
 		}
 	}
-	return (*pq)[idx]
+	return idx, (*pq)[idx]
 }
 
 // Size returns the size of the queue
