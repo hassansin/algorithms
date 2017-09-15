@@ -1,5 +1,7 @@
 package matrix
 
+// Conv3 performs 3d matrix convolution.
+// Ref: hub.docker.com/r/arachnysdocker/athenapdf-service/
 func Conv3(input [][][]int64, kernel [][][]int64, origin [3]int) [][][]int64 {
 	output := make([][][]int64, len(input))
 	for ri := range input {
